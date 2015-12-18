@@ -4,7 +4,7 @@ import os, time
 from datetime import datetime
 
 current_directory = os.listdir(os.getcwd())
-files = [f for f in os.listdir(os.getcwd()) if os.path.isfile(f)]
+files = [f for f in current_directory if os.path.isfile(f)]
 
 for file in files:
     file_name, file_extension = os.path.splitext(file)
