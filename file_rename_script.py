@@ -1,6 +1,6 @@
 #!/usr/local/opt/coreutils/libexec/gnubin/env python3
 
-import os, time
+import os, time, sys
 from datetime import datetime
 
 current_directory = os.listdir(os.getcwd())
@@ -12,8 +12,8 @@ for file in files:
     prompt_user = "What would you like to name " + file + " to? "
     user_response = input(prompt_user)
     if user_response:
-        os.rename(file, create_date + "-" + user_response.replace(" ", "_") + file_extension)
-        print("Renamed your file to", create_date + "-" + user_response.replace(" ", "_") + file_extension)
+        os.rename(file, create_date + "-" + user_response.replace(" ", "_").replace(".", "-").lower() + file_extension)
+        print("Renamed your file to", create_date + "-" + user_response.replace(" ", "_").replace(".", "-").lower() + file_extension)
         print()
     else:
         print(file, "was not changed")
