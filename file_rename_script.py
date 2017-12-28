@@ -1,4 +1,4 @@
-#!/usr/local/opt/coreutils/libexec/gnubin/env python3
+#!/usr/bin/env python3
 
 import os
 import time
@@ -33,10 +33,9 @@ def rename_file(file):
     file_name, file_extension, create_date = set_up_file_name(file)
     user_response = prompt_user_for_name(file)
     if user_response:
-        os.rename(file, create_date + "-" + user_response.replace(" ",
-                                                                  "_").replace("~", "-").lower() + file_extension)
-        print("Renamed your file to", create_date + "-" +
-              user_response.replace(" ", "_").replace("~", "-").lower() + file_extension)
+        new_file = create_date + "-" + user_response.replace(" ", "_").replace("~", "-").lower() + file_extension
+        os.rename(file, new_file)
+        print("Renamed your file to", new_file)
         print()
     else:
         print(file, "was not changed")
